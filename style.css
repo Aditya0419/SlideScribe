@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden; 
+  }
+  
+  .container {
+    display: flex;
+    width: 100%;
+  }
+  
+  /* View Panel */
+  .view-panel {
+    width: 20%;
+    background: #f0f0f0;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    overflow-y: auto; /* Enables vertical scrolling if content overflows */
+    height: 100%;
+  }
+  
+  .slide {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .slide img {
+    /* width: 100%; */
+    height: auto; /* Maintains the 9:16 aspect ratio */
+    max-width: 90%; /* Adds padding inside each thumbnail */
+    /* max-height: 120px; Ensures thumbnails are proportional and don't take up too much space */
+    object-fit: cover; /* Ensures images fit nicely inside the thumbnails */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  /* Highlight active slide thumbnail */
+.slide.active img {
+    border: 2px solid #007bff; /* Blue border for active thumbnail */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px; /* Match thumbnail style */
+  }
+  
+  
+  .slide:hover img {
+    border-color: #999; /* Highlights on hover */
+  }
+  
+  /* Main Workspace */
+  .main-workspace {
+    flex-grow: 1;
+    position: relative;
+    background: #e9e9e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper {
+    /* overflow: hidden; */
+  max-width: 30%;
+  max-height: 100%;
+  }
+  .swiper-wrapper {
+    width: 100%;
+    max-width: 100vw; /* Ensures no overflow */
+    margin: 0;
+    transform: none; /* Reset any erroneous transforms */
+  }
+  
+  
+  .swiper-slide {
+    width: auto; /* Use dynamic width based on content */
+  max-width: 100%; /* Prevent large width */
+  margin: 0; /* Remove excessive margins */
+  }
+  
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .left-arrow {
+    left: 10px;
+  }
+  
+  .right-arrow {
+    right: 10px;
+  }
+  
+  /* Toolbar */
+  .toolbar {
+    width: 20%;
+    background: #fff;
+    padding: 10px;
+    border-left: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+
+  /* textbox */
+  .text-box {
+    position: absolute;
+    font-size: 16px;
+    padding: 5px;
+    cursor: move;
+    border: 1px dashed transparent;
+    background: none;
+    color: black;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: inline-block; /* To ensure it's treated like a block element */
+}
+
+/* When the text box is focused (selected) */
+.text-box:focus {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.6);
+    outline: none;
+
+    .resize-handle{
+        opacity: 1;
+    }
+}
+
+/* Dot for resizing in the bottom-right corner */
+.text-box .resize-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50% 0% 0% 0%;
+    cursor: se-resize; /* Resize cursor */
+    z-index: 10; /* Ensure the handle is on top */
+    opacity: 0;
+}
+
+
+
+
+
